@@ -19,7 +19,7 @@ jobs:
         run: npm install -g npm@v8.11.0
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --only=dev
 
       - name: Build proyect
         run: npm run build
