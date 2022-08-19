@@ -1,0 +1,38 @@
+name: Download-artifact
+on: victora
+jobs:
+  download-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Download artifact
+      #   uses: aochmann/actions-download-artifact@1.0.0
+      #   with:
+      #     # Optional, GitHub token
+      #     github_token: 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
+      #     name: prueba
+      #     latest: true
+      #     # Optional, directory where to extract artifact
+      #     path: ./
+
+      #     # Optional, defaults to current repo
+      #     repo: ind-vargento/typescript-node-express-realworld-example-app
+
+
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: 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
+          workflow: gen-artifact.yml
+          workflow_conclusion: success
+          # run_id: 1122334455
+          # run_number: 34
+          name: prueba
+          path: ./
+          repo: ind-vargento/typescript-node-express-realworld-example-app
+          # check_artifacts:  false
+          # search_artifacts: false
+          skip_unpack: true
+
+      - run: unzip prueba.zip 
+      # - run: ls
+      - run: npm install --omit=dev
